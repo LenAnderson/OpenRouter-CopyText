@@ -2,10 +2,10 @@
 // @name         OpenRouter - Copy Text
 // @namespace    https://github.com/LenAnderson
 // @downloadURL  https://github.com/LenAnderson/OpenRouter-CopyText/raw/main/OpenRouter-CopyText.user.js
-// @version      1.1
+// @version      1.2
 // @description  Add a copy button to message on openrouter
 // @author       LenAnderson
-// @match        https://openrouter.ai/playground*
+// @match        https://openrouter.ai/*
 // @grant        none
 // ==/UserScript==
 
@@ -54,6 +54,9 @@
 	const update = ()=>{
 		$$('button[title="Delete"]').filter(it=>!it.hasAttribute('data-ordl')).forEach(del=>{
 			del.setAttribute('data-ordl', 1);
+			del.parentElement.style.position = 'sticky';
+			del.parentElement.style.top = '0';
+			del.parentElement.style.height = 'fit-content';
 			const btn = document.createElement('button'); {
 				btn.className = 'inline-flex items-center justify-center whitespace-nowrap rounded-md font-medium focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50 leading-6 gap-2 bg-secondary text-secondary-foreground shadow-sm hover:bg-secondary/80 opacity-0 group-hover:opacity-100 transition-all w-6 h-6 p-1';
 				//btn.textContent = '📋';
